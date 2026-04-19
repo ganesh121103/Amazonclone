@@ -27,12 +27,30 @@ router.get('/products', (req, res) => {
   const page = Number(req.query.page) || 1;
   const keyword = req.query.keyword ? req.query.keyword.toLowerCase() : '';
   const category = req.query.category || '';
+  const minPrice = req.query.minPrice ? Number(req.query.minPrice) : 0;
+  const maxPrice = req.query.maxPrice ? Number(req.query.maxPrice) : Infinity;
+  const rating = req.query.rating ? Number(req.query.rating) : 0;
+  const sort = req.query.sort || '';
 
   let filtered = mockProducts.filter((p) => {
-    const matchKeyword = p.name.toLowerCase().includes(keyword);
+    const matchKeyword = p.name.toLowerCase().includes(keyword) || p.description.toLowerCase().includes(keyword);
     const matchCategory = category ? p.category === category : true;
-    return matchKeyword && matchCategory;
+    const matchPrice = p.price >= minPrice && p.price <= maxPrice;
+    const matchRating = p.rating >= rating;
+    return matchKeyword && matchCategory && matchPrice && matchRating;
   });
+
+  if (sort === 'price_asc') {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sort === 'price_desc') {
+    filtered.sort((a, b) => b.price - a.price);
+  } else if (sort === 'rating') {
+    filtered.sort((a, b) => b.rating - a.rating);
+  } else if (sort === 'popular') {
+    filtered.sort((a, b) => b.numReviews - a.numReviews);
+  } else {
+    filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
 
   const count = filtered.length;
   const products = filtered.slice((page - 1) * pageSize, page * pageSize);

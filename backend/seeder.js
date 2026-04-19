@@ -288,8 +288,8 @@ const seedData = async () => {
     const createdUsers = await User.insertMany(users);
     const adminUser = createdUsers[0]._id;
     console.log(`👤 Created ${createdUsers.length} users`);
-    console.log(`   Admin: admin@amazonclone.com / admin123`);
-    console.log(`   User:  rahul@example.com / user1234`);
+    console.log(`   Admin: admin / admin123`);
+    console.log(`   User:  user / user123`);
 
     // Attach admin user as creator to all products
     const products = sampleProducts.map((p) => ({ ...p, user: adminUser }));

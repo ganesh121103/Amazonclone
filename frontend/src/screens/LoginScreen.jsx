@@ -48,9 +48,9 @@ const LoginScreen = () => {
           <h1 className="text-xl font-bold dark:text-white mb-5">Sign in</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                required placeholder="email@example.com" className="input-field" />
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email or Username</label>
+              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}
+                required placeholder="Email or Username" className="input-field" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
@@ -94,8 +94,8 @@ const LoginScreen = () => {
         {/* Demo credentials */}
         <div className="mt-4 card p-3 text-xs text-gray-500 dark:text-gray-400">
           <p className="font-semibold mb-1 dark:text-gray-300">🔑 Demo Credentials:</p>
-          <p>Admin: admin@amazonclone.com / admin123</p>
-          <p>User: rahul@example.com / user1234</p>
+          <p>Admin: admin / admin123</p>
+          <p>User: user / user123</p>
         </div>
       </div>
     </div>

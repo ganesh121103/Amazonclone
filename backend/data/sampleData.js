@@ -1,7 +1,7 @@
 const users = [
-  { name: 'Admin User', email: 'admin@amazonclone.com', password: 'admin123', isAdmin: true },
-  { name: 'Rahul Sharma', email: 'rahul@example.com', password: 'user1234', isAdmin: false },
-  { name: 'Priya Singh', email: 'priya@example.com', password: 'user1234', isAdmin: false },
+  { name: 'Admin User', email: 'admin', password: 'admin123', isAdmin: true },
+  { name: 'Regular User', email: 'user', password: 'user123', isAdmin: false },
+  { name: 'Priya Singh', email: 'priya', password: 'user123', isAdmin: false },
 ];
 
 const sampleProducts = [

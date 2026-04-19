@@ -208,11 +208,10 @@ Amazonclone/
 
 ## 🔐 Default Credentials (after seeding)
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@amazonclone.com | admin123 |
-| User | rahul@example.com | user1234 |
-| User | priya@example.com | user1234 |
+| Role  | Email  | Password |
+|----- -|------- |----------|
+| Admin | admin  | admin123 |
+| User  | user   | user123  |
 
 ---
 

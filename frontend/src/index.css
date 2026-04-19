@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply box-border; }
+  html { @apply scroll-smooth; }
+  body { @apply font-sans text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-900 transition-colors duration-200; }
+}
+
+@layer components {
+  /* Amazon-style buttons */
+  .btn-primary {
+    @apply bg-amazon text-amazon-blue-dark font-semibold px-4 py-2 rounded-md
+           hover:bg-amazon-dark active:scale-95 transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-amazon focus:ring-offset-1;
+  }
+  .btn-secondary {
+    @apply bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium px-4 py-2 rounded-md
+           hover:bg-gray-300 dark:hover:bg-gray-600 active:scale-95 transition-all duration-150;
+  }
+  .btn-danger {
+    @apply bg-red-600 text-white font-medium px-4 py-2 rounded-md
+           hover:bg-red-700 active:scale-95 transition-all duration-150;
+  }
+  .btn-outline {
+    @apply border border-amazon text-amazon font-medium px-4 py-2 rounded-md
+           hover:bg-amazon hover:text-amazon-blue-dark active:scale-95 transition-all duration-150;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  /* Input */
+  .input-field {
+    @apply w-full border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2
+           bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+           focus:outline-none focus:ring-2 focus:ring-amazon focus:border-transparent
+           placeholder-gray-400 dark:placeholder-gray-500 transition-colors duration-150;
+  }
+
+  /* Badge */
+  .badge {
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mb-6 relative
+           after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-12 after:h-1 after:bg-amazon after:rounded-full;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-gray-800; }
+::-webkit-scrollbar-thumb { @apply bg-gray-400 dark:bg-gray-600 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-amazon; }

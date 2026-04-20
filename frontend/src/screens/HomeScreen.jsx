@@ -5,6 +5,7 @@ import ProductCard from '../components/ProductCard';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { FaChevronLeft, FaChevronRight, FaFire, FaSlidersH, FaTimes } from 'react-icons/fa';
+import Rating from '../components/Rating';
 
 const CATEGORIES = ['All', 'Electronics', 'Computers', 'Fashion', 'Home & Kitchen', 'Books', 'Sports', 'Toys & Games', 'Beauty', 'Automotive', 'Health'];
 
@@ -137,9 +138,9 @@ const HomeScreen = () => {
             <div>
               <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Min Rating</h4>
               {[4, 3, 2, 1].map((r) => (
-                <button key={r} onClick={() => updateParam('rating', r.toString())}
-                  className={`block text-sm w-full text-left px-2 py-1 rounded transition-colors ${rating === r.toString() ? 'text-amazon font-semibold' : 'text-gray-700 dark:text-gray-300 hover:text-amazon'}`}>
-                  {r}★ & above
+                <button key={r} onClick={() => updateParam('rating', rating === r.toString() ? '' : r.toString())}
+                  className={`flex items-center gap-1 text-sm w-full text-left px-2 py-1 rounded transition-colors ${rating === r.toString() ? 'bg-amazon/10 text-amazon font-semibold' : 'text-gray-700 dark:text-gray-300 hover:text-amazon hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
+                  <Rating value={r} /> <span className="text-xs">& above</span>
                 </button>
               ))}
             </div>

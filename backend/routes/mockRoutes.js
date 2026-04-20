@@ -58,6 +58,12 @@ router.get('/products', (req, res) => {
   res.json({ products, page, pages: Math.ceil(count / pageSize), total: count });
 });
 
+// MOCK: Get all products (admin)
+router.get('/products/admin', (req, res) => {
+  const products = [...mockProducts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  res.json(products);
+});
+
 // MOCK: Get single product
 router.get('/products/:id', (req, res) => {
   const product = mockProducts.find((p) => p._id === req.params.id) || mockProducts[0];

@@ -17,7 +17,7 @@ const sampleProducts = [
     numReviews: 3240,
     isFeatured: true,
     tags: ['iphone', 'apple', 'smartphone', '5g'],
-    images: [{ public_id: 'iphone15promax', url: 'https://images.unsplash.com/photo-1695048065948-c93791f8e3ab?w=600&q=80' }],
+    images: [{ public_id: 'iphone15promax', url: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&q=80' }],
   },
   {
     name: 'Samsung 65" QLED 4K Smart TV',
@@ -31,7 +31,7 @@ const sampleProducts = [
     numReviews: 1850,
     isFeatured: true,
     tags: ['tv', 'samsung', 'qled', '4k', 'smart tv'],
-    images: [{ public_id: 'samsung_tv', url: 'https://images.unsplash.com/photo-1593784991095-a205069474b5?w=600&q=80' }],
+    images: [{ public_id: 'samsung_tv', url: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=600&q=80' }],
   },
   {
     name: 'Sony WH-1000XM5 Wireless Headphones',
@@ -115,7 +115,7 @@ const sampleProducts = [
     numReviews: 42000,
     isFeatured: true,
     tags: ['kindle', 'ereader', 'amazon', 'books'],
-    images: [{ public_id: 'kindle_paperwhite', url: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&q=80' }],
+    images: [{ public_id: 'kindle_paperwhite', url: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80' }],
   },
   {
     name: "The Alchemist - Paulo Coelho (Paperback)",

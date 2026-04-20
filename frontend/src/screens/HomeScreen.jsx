@@ -47,13 +47,18 @@ const HomeScreen = () => {
             <p className="text-gray-300 text-sm sm:text-base mb-5 max-w-md">
               Discover millions of products with great deals, fast delivery, and trusted sellers.
             </p>
-            <Link to="/?featured=true" className="btn-primary inline-block text-sm px-6 py-2.5">
+            <button 
+              onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })} 
+              className="btn-primary inline-block text-sm px-6 py-2.5"
+            >
               Shop Now →
-            </Link>
+            </button>
           </div>
           <div className="absolute right-0 bottom-0 text-[12rem] opacity-5 font-extrabold select-none">A</div>
         </div>
       )}
+
+      <div id="products-section" className="scroll-mt-20"></div>
 
       {/* Top Products Carousel */}
       {!keyword && !category && topProducts?.length > 0 && (

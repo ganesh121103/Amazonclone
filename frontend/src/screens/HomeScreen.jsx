@@ -55,7 +55,7 @@ const HomeScreen = () => {
               Shop Now →
             </button>
           </div>
-          <div className="absolute right-0 bottom-0 text-[12rem] opacity-5 font-extrabold select-none">A</div>
+          <div className="absolute right-0 bottom-0 text-[12rem] text-white opacity-5 font-extrabold select-none">A</div>
         </div>
       )}
 

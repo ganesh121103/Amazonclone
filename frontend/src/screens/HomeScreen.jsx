@@ -29,7 +29,9 @@ const HomeScreen = () => {
   const updateParam = (key, value) => {
     const params = new URLSearchParams(searchParams);
     if (value) params.set(key, value); else params.delete(key);
-    params.delete('page');
+    if (key !== 'page') {
+      params.delete('page');
+    }
     setSearchParams(params);
   };
 

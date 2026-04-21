@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
@@ -31,14 +31,29 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import OrderListScreen from './screens/admin/OrderListScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 
+// Onboarding Screen
+import OnboardingScreen from './screens/OnboardingScreen';
+
 // Inner app component — needs dispatch from provider
 const AppInner = () => {
   const dispatch = useDispatch();
+  
+  const [showOnboarding, setShowOnboarding] = useState(
+    () => !localStorage.getItem('userInfo')
+  );
+
+  const handleSkipOnboarding = () => {
+    setShowOnboarding(false);
+  };
   
   useEffect(() => {
     // Apply persisted theme on mount
     dispatch(initTheme());
   }, [dispatch]);
+
+  if (showOnboarding) {
+    return <OnboardingScreen onSkip={handleSkipOnboarding} />;
+  }
 
   return (
     <Router>

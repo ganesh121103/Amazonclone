@@ -74,7 +74,7 @@ const OnboardingScreen = ({ onSkip }) => {
         <div className="flex flex-col items-center justify-center space-y-4">
           <button
             onClick={onSkip}
-            className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-amazon-orange border border-transparent rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazon-orange dark:focus:ring-offset-gray-900 shadow-[0_0_20px_rgba(255,153,0,0.3)] hover:shadow-[0_0_30px_rgba(255,153,0,0.5)] transform hover:scale-105"
+            className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 transition-all duration-200 bg-amazon-orange border border-transparent rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazon-orange dark:focus:ring-offset-gray-900 shadow-[0_0_20px_rgba(255,153,0,0.3)] hover:shadow-[0_0_30px_rgba(255,153,0,0.5)] transform hover:scale-105"
           >
             <span className="mr-2">Skip & Get Started</span>
             <MdSkipNext className="text-2xl transform group-hover:translate-x-1 transition-transform" />

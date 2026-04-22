@@ -5,7 +5,7 @@ import './index.css';
 
 const rootElement = document.getElementById('root');
 
-// Add a slight artificial delay (1.5s) to ensure the startup animation 
+// Add a slight artificial delay (3.5s) to ensure the startup animation 
 // is visible and the app feels premium during boot up
 setTimeout(() => {
   ReactDOM.createRoot(rootElement).render(
@@ -13,4 +13,4 @@ setTimeout(() => {
       <App />
     </React.StrictMode>
   );
-}, 1500);
+}, 3500);

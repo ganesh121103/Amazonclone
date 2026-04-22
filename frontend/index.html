@@ -18,54 +18,190 @@
   <body>
     <div id="root">
       <style>
+        :root {
+          --amz-dark: #232f3e;
+          --amz-orange: #ff9900;
+        }
         #initial-loader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 100vh;
-          width: 100vw;
-          background-color: #f3f4f6; /* Tailwind gray-100 */
-          font-family: system-ui, -apple-system, sans-serif;
+          background-color: #f8fafc;
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          overflow: hidden;
+          z-index: 9999;
         }
         @media (prefers-color-scheme: dark) {
           #initial-loader {
-            background-color: #111827; /* Tailwind gray-900 */
+            background-color: #0f172a;
           }
         }
-        .spinner {
-          width: 50px;
-          height: 50px;
-          border: 4px solid rgba(255, 153, 0, 0.2);
-          border-left-color: #FF9900; /* Amazon orange */
+    
+        /* Ambient animated blobs */
+        .blob {
+          position: absolute;
           border-radius: 50%;
-          animation: spin 1s linear infinite;
-          margin-bottom: 16px;
+          filter: blur(80px);
+          z-index: -1;
+          opacity: 0.4;
+          animation: float 8s infinite alternate ease-in-out;
         }
-        .loading-text {
-          color: #232F3E; /* Amazon blue-dark */
-          font-size: 1.125rem;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          animation: pulse 1.5s ease-in-out infinite;
+        .blob-1 {
+          width: 300px;
+          height: 300px;
+          background: var(--amz-orange);
+          top: 10%;
+          left: 15%;
+        }
+        .blob-2 {
+          width: 400px;
+          height: 400px;
+          background: #3b82f6; 
+          bottom: 5%;
+          right: 10%;
+          animation-delay: -4s;
+          opacity: 0.25;
+        }
+        @keyframes float {
+          0% { transform: translateY(0) scale(1); }
+          100% { transform: translateY(-40px) scale(1.1); }
+        }
+    
+        /* Logo Typography */
+        .brand-container {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          animation: scaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .brand-text {
+          font-size: 3.5rem;
+          font-weight: 800;
+          letter-spacing: -1.5px;
+          color: var(--amz-dark);
+          margin: 0;
+          padding: 0;
+          line-height: 1;
         }
         @media (prefers-color-scheme: dark) {
-          .loading-text {
+          .brand-text {
             color: #ffffff;
           }
         }
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+    
+        /* The Smile SVG */
+        .smile-svg {
+          width: 130px;
+          margin-top: -5px;
+          overflow: visible;
         }
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
+        .smile-path {
+          stroke-dasharray: 150;
+          stroke-dashoffset: 150;
+          animation: drawSmile 1s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s;
+        }
+        .smile-arrow {
+          opacity: 0;
+          animation: showArrow 0.2s linear forwards 1.2s;
+        }
+        
+        @keyframes drawSmile {
+          to { stroke-dashoffset: 0; }
+        }
+        @keyframes showArrow {
+          to { opacity: 1; }
+        }
+        @keyframes scaleUp {
+          0% { transform: scale(0.85); opacity: 0; filter: blur(8px); }
+          100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        }
+    
+        /* Progress and Subtext */
+        .loading-status {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          animation: fadeIn 1s ease-out forwards 1s;
+          opacity: 0;
+        }
+    
+        .shimmer-text {
+          font-size: 1.05rem;
+          font-weight: 500;
+          color: #64748b;
+          margin-bottom: 15px;
+          background: linear-gradient(90deg, #64748b 0%, #cbd5e1 50%, #64748b 100%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 2s linear infinite;
+        }
+        @media (prefers-color-scheme: dark) {
+          .shimmer-text {
+            color: #94a3b8;
+            background: linear-gradient(90deg, #94a3b8 0%, #ffffff 50%, #94a3b8 100%);
+            -webkit-background-clip: text;
+          }
+        }
+    
+        .progress-bar {
+          width: 200px;
+          height: 4px;
+          background: rgba(148, 163, 184, 0.2);
+          border-radius: 4px;
+          overflow: hidden;
+          position: relative;
+        }
+        .progress-fill {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 50%;
+          background: var(--amz-orange);
+          border-radius: 4px;
+          animation: indeterminate 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+    
+        @keyframes fadeIn {
+          to { opacity: 1; }
+        }
+        @keyframes shimmer {
+          to { background-position: 200% center; }
+        }
+        @keyframes indeterminate {
+          0% { transform: translateX(-100%) scaleX(0.2); }
+          50% { transform: translateX(0%) scaleX(0.5); }
+          100% { transform: translateX(200%) scaleX(0.2); }
         }
       </style>
+    
       <div id="initial-loader">
-        <div class="spinner"></div>
-        <div class="loading-text">Loading Amazon Clone...</div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="brand-container">
+          <h1 class="brand-text">amazon</h1>
+          <svg class="smile-svg" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="smile-path" d="M 5 15 C 30 35, 70 35, 95 15" stroke="#FF9900" stroke-width="4.5" stroke-linecap="round"/>
+            <path class="smile-arrow" d="M 85 5 L 98 15 L 85 24" fill="#FF9900"/>
+          </svg>
+        </div>
+    
+        <div class="loading-status">
+          <div class="shimmer-text">Preparing your experience...</div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.jsx"></script>
